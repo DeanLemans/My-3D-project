@@ -2,9 +2,11 @@ extends CharacterBody3D
 
 @onready var animation_player = $Node3D/mixamo_base/AnimationPlayer
 
-const SPEED = 5.0
+const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 
+var walking_speed = 3.0
+var running_speed = 4.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
