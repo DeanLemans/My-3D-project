@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1v41evajktg6"]
+[gd_scene load_steps=6 format=3 uid="uid://c1v41evajktg6"]
+
+[ext_resource type="PackedScene" uid="uid://bmsbjukegeilc" path="res://scenes/player.tscn" id="1_a01t2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_aspc4"]
 
@@ -36,3 +38,6 @@ camera_attributes = SubResource("CameraAttributesPractical_41hrl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04029, 0)
 text = "Welcome to the Void.
 "
+
+[node name="player" parent="." instance=ExtResource("1_a01t2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37705, 0, 0.521259)
