@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1v41evajktg6"]
+[gd_scene load_steps=12 format=3 uid="uid://c1v41evajktg6"]
 
+[ext_resource type="Texture2D" uid="uid://b5vk1363322k5" path="res://img/riz.png" id="1_3dsym"]
 [ext_resource type="PackedScene" uid="uid://bmsbjukegeilc" path="res://scenes/player.tscn" id="1_a01t2"]
+[ext_resource type="Texture2D" uid="uid://b0gpfypnne3c0" path="res://img/stop.png" id="3_f3oc7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a44t7"]
+albedo_texture = ExtResource("1_3dsym")
 
 [sub_resource type="BoxMesh" id="BoxMesh_aspc4"]
 
@@ -12,16 +17,24 @@ background_energy_multiplier = 0.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_41hrl"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0jqv"]
+albedo_texture = ExtResource("3_f3oc7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_y01n5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nq00m"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0, 1.25, 3)
+transform = Transform3D(1, 0, 0, 0, 0.821329, 0.570455, 0, -0.570455, 0.821329, 0, 4.39829, 5.01859)
 
 [node name="floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.442685, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
 transform = Transform3D(7.5, 0, 0, 0, 0.5, 0, 0, 0, 6, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a44t7")
 mesh = SubResource("BoxMesh_aspc4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
@@ -41,3 +54,13 @@ text = "Welcome to the Void.
 
 [node name="player" parent="." instance=ExtResource("1_a01t2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37705, 0, 0.521259)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76177, 0.890075, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_e0jqv")
+mesh = SubResource("BoxMesh_y01n5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_nq00m")
