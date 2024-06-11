@@ -1,47 +1,55 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1v41evajktg6"]
+[gd_scene load_steps=17 format=3 uid="uid://c1v41evajktg6"]
 
-[ext_resource type="Texture2D" uid="uid://b5vk1363322k5" path="res://img/riz.png" id="1_3dsym"]
 [ext_resource type="PackedScene" uid="uid://bmsbjukegeilc" path="res://scenes/player.tscn" id="1_a01t2"]
-[ext_resource type="Texture2D" uid="uid://b0gpfypnne3c0" path="res://img/stop.png" id="3_f3oc7"]
+[ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://img/Dark/texture_01.png" id="1_e7kxp"]
+[ext_resource type="Texture2D" uid="uid://ntuycylqfvn6" path="res://img/Red/texture_13.png" id="4_5dwmg"]
+[ext_resource type="Texture2D" uid="uid://dko2pc0uq6pwf" path="res://img/Green/texture_01.png" id="4_6w1ew"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a44t7"]
-albedo_texture = ExtResource("1_3dsym")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikbkh"]
+albedo_texture = ExtResource("1_e7kxp")
 
 [sub_resource type="BoxMesh" id="BoxMesh_aspc4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6a3sl"]
-size = Vector3(7.5, 0.5, 6)
+size = Vector3(10, 0.5, 10)
 
 [sub_resource type="Environment" id="Environment_5wxsc"]
 background_energy_multiplier = 0.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_41hrl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0jqv"]
-albedo_texture = ExtResource("3_f3oc7")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4uir"]
+albedo_texture = ExtResource("4_6w1ew")
 
 [sub_resource type="BoxMesh" id="BoxMesh_y01n5"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq00m"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l3sj"]
+albedo_color = Color(1, 0, 0, 1)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.821329, 0.570455, 0, -0.570455, 0.821329, 0, 4.39829, 5.01859)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bvv8w"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5yded"]
+radius = 0.2
+height = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mafyn"]
+albedo_texture = ExtResource("4_5dwmg")
+
+[node name="Node3D" type="Node3D"]
 
 [node name="floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.442685, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
-transform = Transform3D(7.5, 0, 0, 0, 0.5, 0, 0, 0, 6, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_a44t7")
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ikbkh")
 mesh = SubResource("BoxMesh_aspc4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
 shape = SubResource("BoxShape3D_6a3sl")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.774083, 0.633084, 0, -0.633084, 0.774083, 0, 2.286, 5.65601)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5wxsc")
@@ -55,12 +63,39 @@ text = "Welcome to the Void.
 [node name="player" parent="." instance=ExtResource("1_a01t2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37705, 0, 0.521259)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76177, 0.890075, 0)
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.999939, -0.0110303, 0, 0.0110303, 0.999939, 0, 0, 0, 1, 1.76177, 0.890075, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = SubResource("StandardMaterial3D_e0jqv")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+material_override = SubResource("StandardMaterial3D_c4uir")
+mesh = SubResource("BoxMesh_y01n5")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_nq00m")
+
+[node name="particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="particles"]
+material_override = SubResource("StandardMaterial3D_5l3sj")
+process_material = SubResource("ParticleProcessMaterial_bvv8w")
+draw_pass_1 = SubResource("SphereMesh_5yded")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.21286, 0.977083, 0, -0.977083, -0.21286, 0, 3.44231, 0)
+visible = false
+spot_range = 6.525
+
+[node name="spooky" type="Area3D" parent="."]
+transform = Transform3D(0.999757, -0.0220593, 0, 0.0220593, 0.999757, 0, 0, 0, 1, -4.87946, 0.422636, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spooky"]
+material_override = SubResource("StandardMaterial3D_mafyn")
 mesh = SubResource("BoxMesh_y01n5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spooky"]
 shape = SubResource("BoxShape3D_nq00m")
+
+[connection signal="body_entered" from="Area3D" to="player" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="spooky" to="player" method="_on_spooky_body_entered"]

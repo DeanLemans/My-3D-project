@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cck5e2boxlrmq"]
+
+[ext_resource type="Texture2D" uid="uid://dlb4uafb88nn6" path="res://img/boo.jpeg" id="1_o1km1"]
+
+[node name="Jumpscare" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -711.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1165.0
+offset_bottom = 647.0
+texture = ExtResource("1_o1km1")
+expand_mode = 1
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 131.0
+offset_right = 450.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 22
+text = "I SEE YOU"
+
+[node name="text2" type="Label" parent="."]
+offset_left = 703.0
+offset_top = 135.0
+offset_right = 901.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 22
+text = "IMMA EAT YO EYES"
+
+[node name="text3" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 317.0
+offset_bottom = 293.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
