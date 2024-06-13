@@ -1,6 +1,6 @@
 # My ***cool*** 3D Project
 
-## [Download page](https://github.com/DukeVZ/Totaly-me-and-not-chat-GPT-project/releases/tag/school)
+## [Download page](https://github.com/DeanLemans/My-3D-project/releases)
 
 ## Contributor:
 
