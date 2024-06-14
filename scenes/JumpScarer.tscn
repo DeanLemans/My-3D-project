@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://bed8nnv07cqyp"]
+
+[ext_resource type="Texture2D" uid="uid://dlb4uafb88nn6" path="res://img/boo.jpeg" id="1_rvy1m"]
+[ext_resource type="AudioStream" uid="uid://dr40rt1hqurq1" path="res://jumpscare-sound.mp3" id="2_mriba"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 2385.0
+offset_bottom = 1292.0
+texture = ExtResource("1_rvy1m")
+expand_mode = 1
+
+[node name="text3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 317.0
+offset_bottom = 293.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
+
+[node name="text2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 275.0
+offset_right = 915.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 22
+text = "IMMA EAT YO EYES"
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1565.0
+offset_top = 265.0
+offset_right = 1666.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 22
+text = "I SEE YOU"
+
+[node name="text4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1621.0
+offset_top = 644.0
+offset_right = 1926.0
+offset_bottom = 913.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
+
+[node name="text5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 87.0
+offset_right = 1417.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
+
+[node name="text6" type="Label" parent="."]
+layout_mode = 0
+offset_top = 668.0
+offset_right = 305.0
+offset_bottom = 937.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
+
+[node name="text7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 334.0
+offset_right = 421.0
+offset_bottom = 603.0
+theme_override_font_sizes/font_size = 22
+text = "HAHAHAHAH
+AHAHAHAHAHA
+HAHAHAHAHAHAHA
+HAHAHAHAH
+AHAHAHAHAH
+AHAHAHAHAHAHAHAHAHA
+HAHAHAHA
+HAHAHAHAHAHAHAHHAHA"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mriba")
+volume_db = 24.0
+autoplay = true

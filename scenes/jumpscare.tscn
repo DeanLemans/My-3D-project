@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cck5e2boxlrmq"]
+[gd_scene load_steps=3 format=3 uid="uid://8d6mbbmxxrut"]
 
 [ext_resource type="Texture2D" uid="uid://dlb4uafb88nn6" path="res://img/boo.jpeg" id="1_o1km1"]
 [ext_resource type="AudioStream" uid="uid://dr40rt1hqurq1" path="res://jumpscare-sound.mp3" id="2_usrc0"]
