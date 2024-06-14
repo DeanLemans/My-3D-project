@@ -3925,17 +3925,19 @@ libraries = {
 "": SubResource("AnimationLibrary_2cykd")
 }
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 3.19744e-14, 8.74228e-08, 3.78567e-08, 0.90138, 0.43303, -7.88011e-08, 0.43303, -0.90138, 0, 2.69415, -1.95001)
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.27634, 0.140092)
 light_energy = 5.0
 light_indirect_energy = 2.0
 spot_range = 20.0
-spot_angle = 80.0
+spot_angle = 67.01
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01391, -0.399478)
 distance_fade_enabled = true
 omni_range = 2.0
+
+[node name="CamNode" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CamNode"]
+transform = Transform3D(-1, 3.69465e-08, -7.92319e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906308, 0, 2.41087, -1.61652)
