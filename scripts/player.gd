@@ -14,6 +14,11 @@ var running_speed = 4.0
 @onready var look_speed_h = 0.5 
 @onready var look_speed_v = 0.25 
 
+func _process(_delta):
+	if Input.is_action_pressed("quit"):
+		get_tree().quit()
+		print("quit game")
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
