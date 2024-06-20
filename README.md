@@ -1,9 +1,9 @@
 # My ***cool*** 3D Project
 
-## [Download page](https://github.com/DeanLemans/My-3D-project/releases)
+## [Download Page](https://github.com/DeanLemans/My-3D-project/releases)
+## [Download Process PDF](https://github.com/DeanLemans/My-3D-project/releases/tag/PDF)
 
 ## Contributor:
-
 - [cheese](https://github.com/DeanLemans)
 
 ## License:
