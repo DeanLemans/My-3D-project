@@ -14,6 +14,7 @@ var running_speed = 4.0
 @onready var look_speed_h = 0.5 
 @onready var look_speed_v = 0.25 
 
+
 func _process(_delta):
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -25,7 +26,7 @@ func _ready() -> void:
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * look_speed_h))
-		CamNode.rotate_x(deg_to_rad(-event.relative.y * look_speed_v))
+		#CamNode.rotate_x(deg_to_rad(-event.relative.y * look_speed_v))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,8 +37,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_speed
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	var input_dir := Input.get_vector("right", "left", "down", "up")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:

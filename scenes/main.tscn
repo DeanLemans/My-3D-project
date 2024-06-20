@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1v41evajktg6"]
+[gd_scene load_steps=20 format=3 uid="uid://c1v41evajktg6"]
 
 [ext_resource type="PackedScene" uid="uid://bmsbjukegeilc" path="res://scenes/player.tscn" id="1_a01t2"]
 [ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://img/Dark/texture_01.png" id="1_e7kxp"]
@@ -26,17 +26,24 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq00m"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l3sj"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqa36"]
+albedo_color = Color(2.45467e-06, 0.675141, 0.154255, 0.980392)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bvv8w"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_5yded"]
-radius = 0.2
-height = 0.7
+[sub_resource type="TorusMesh" id="TorusMesh_oicxe"]
+inner_radius = 1.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mafyn"]
 albedo_texture = ExtResource("4_5dwmg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l3sj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5yded"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h7tw"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -56,38 +63,43 @@ environment = SubResource("Environment_5wxsc")
 camera_attributes = SubResource("CameraAttributesPractical_41hrl")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04029, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.53203, 0.930508, 0)
 text = "Welcome to the Void.
+
+WASD to move
+spacebar to jump
+ESC to quit
 "
 
 [node name="player" parent="." instance=ExtResource("1_a01t2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37705, 0, 0.521259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37705, 0, -4.39538)
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.999939, -0.0110303, 0, 0.0110303, 0.999939, 0, 0, 0, 1, 1.76177, 0.890075, 0)
+[node name="green" type="Area3D" parent="."]
+transform = Transform3D(0.999939, -0.0110303, 0, 0.0110303, 0.999939, 0, 0, 0, 1, 2.76177, 0.890075, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="green"]
 material_override = SubResource("StandardMaterial3D_c4uir")
 mesh = SubResource("BoxMesh_y01n5")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="green"]
 shape = SubResource("BoxShape3D_nq00m")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="green"]
+transform = Transform3D(0.999939, 0.0110303, 0, -0.0110303, 0.999939, 0, 0, 0, 1, 0.0284101, 2.10974, 0)
+material_override = SubResource("StandardMaterial3D_cqa36")
+process_material = SubResource("ParticleProcessMaterial_bvv8w")
+draw_pass_1 = SubResource("TorusMesh_oicxe")
 
 [node name="particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 0)
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="particles"]
-material_override = SubResource("StandardMaterial3D_5l3sj")
-process_material = SubResource("ParticleProcessMaterial_bvv8w")
-draw_pass_1 = SubResource("SphereMesh_5yded")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.21286, 0.977083, 0, -0.977083, -0.21286, 0, 3.44231, 0)
 spot_range = 6.525
 
 [node name="spooky" type="Area3D" parent="."]
-transform = Transform3D(0.999757, -0.0220593, 0, 0.0220593, 0.999757, 0, 0, 0, 1, -4.87946, 0.422636, 0)
+transform = Transform3D(0.999757, -0.0220593, 0, 0.0220593, 0.999757, 0, 0, 0, 1, -0.0223374, 0.422636, 15.0526)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="spooky"]
 material_override = SubResource("StandardMaterial3D_mafyn")
@@ -96,5 +108,44 @@ mesh = SubResource("BoxMesh_y01n5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spooky"]
 shape = SubResource("BoxShape3D_nq00m")
 
-[connection signal="body_entered" from="Area3D" to="player" method="_on_area_3d_body_entered"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="spooky"]
+transform = Transform3D(0.999756, 0.0220593, 0, -0.0220593, 0.999756, 0, 0, 0, 1, 0.0613087, 2.57664, 0)
+material_override = SubResource("StandardMaterial3D_5l3sj")
+process_material = SubResource("ParticleProcessMaterial_bvv8w")
+draw_pass_1 = SubResource("SphereMesh_5yded")
+
+[node name="floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.442685, 11.2656)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor2"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ikbkh")
+mesh = SubResource("BoxMesh_aspc4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor2"]
+shape = SubResource("BoxShape3D_6a3sl")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.439082, 5.62885)
+text = "come to me."
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.86805e-07, 0.16116, 13.664)
+text = "praise the cube.
+
+TOUCH THE CUBE"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999999, -3.32395e-07, -7.58234e-08, -7.58233e-08, -0.433659, 0.901077, -3.32395e-07, -0.901076, -0.433659, 4.21292, 4.01396, 15.3598)
+material_override = SubResource("StandardMaterial3D_1h7tw")
+process_material = SubResource("ParticleProcessMaterial_bvv8w")
+draw_pass_1 = SubResource("SphereMesh_5yded")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999999, -1.19926e-07, -3.42455e-07, -3.42455e-07, -0.623879, -0.78152, -1.19926e-07, 0.78152, -0.623879, -4.61211, 3.04947, 15.7062)
+material_override = SubResource("StandardMaterial3D_1h7tw")
+process_material = SubResource("ParticleProcessMaterial_bvv8w")
+draw_pass_1 = SubResource("SphereMesh_5yded")
+
+[connection signal="body_entered" from="green" to="player" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="spooky" to="player" method="_on_spooky_body_entered"]
